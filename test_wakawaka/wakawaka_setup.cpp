@@ -64,8 +64,8 @@ void																					::wak::setupEnemies														(SGame& gameObject) {
 	gameObject.Enemies.clear();
 	for (uint32_t enemyCount = 0; enemyCount < GHOST_COUNT; enemyCount++) {
 		SEnemy														newEnemy;
-		newEnemy.CurrentMode										= MODE_SCATTER;
-		newEnemy.PrevtMode											= MODE_SCATTER;
+		newEnemy.CurrentMode										= MODE_DISBAND;
+		newEnemy.PrevtMode											= MODE_DISBAND;
 		newEnemy.PositionDeltas										= { 0, 0.5f };
 		newEnemy.Speed												= 4.0f;
 		newEnemy.Vulnerability										=
