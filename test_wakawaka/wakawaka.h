@@ -61,7 +61,6 @@ namespace wak
 		MODE																				CurrentMode;
 		MODE																				PrevtMode;
 		::gpk::SCoord2<int32_t>																TargetTile;
-		bool																				Vulnerability;
 		bool																				InHouse;
 		bool																				Reverse;
 		bool																				AlreadyOut;

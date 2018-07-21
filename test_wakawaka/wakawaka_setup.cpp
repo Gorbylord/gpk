@@ -68,7 +68,6 @@ void																					::wak::setupEnemies														(SGame& gameObject) {
 		newEnemy.PrevtMode											= MODE_DISBAND;
 		newEnemy.PositionDeltas										= { 0, 0.5f };
 		newEnemy.Speed												= 4.0f;
-		newEnemy.Vulnerability										=
 		newEnemy.Reverse											=
 		newEnemy.Dead												=
 		newEnemy.AlreadyOut											= false;
