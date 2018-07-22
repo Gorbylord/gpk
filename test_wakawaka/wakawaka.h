@@ -9,6 +9,17 @@
 #define														TILE_PELLET					250
 #define														TILE_ENERGYZER				15
 #define														TILE_FRUIT					3
+#define														TILE_VERTICAL_LINE			179
+#define														TILE_DOWN_LEFT				200
+#define														TILE_UP_LEFT				201
+#define														TILE_UP_RIGHT				187
+#define														TILE_DOWN_RIGHT				188
+#define														TILE_T_DOWN					203
+#define														TILE_T_UP					202
+#define														TILE_T_RIGHT				204
+#define														TILE_T_LEFT					185
+#define														TILE_HORIZONTAL				205
+#define														TILE_VERTICAL				186
 namespace wak
 {
 	enum														DIRECTION 
