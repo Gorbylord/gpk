@@ -52,10 +52,10 @@ namespace wak
 
 	struct														SMap {
 		::gpk::SCoord2<int32_t>																Size;
-		unsigned char																		TilesMap[AXIS_Y][AXIS_X];
-		unsigned char																		TilesEnemy[AXIS_Y][AXIS_X];
-		bool																				TilesDecision[AXIS_Y][AXIS_X];
-		bool																				TilesSolid[AXIS_Y][AXIS_X];
+		::gpk::SImage<unsigned char>														TilesMap		;
+		::gpk::SImage<unsigned char>														TilesEnemy		;
+		::gpk::SImage<bool		   >														TilesDecision	;
+		::gpk::SImage<bool		   >														TilesSolid		;
 		::gpk::SCoord2<int32_t>																posToDraw;
 	};
 
@@ -83,6 +83,10 @@ namespace wak
 		SMap																				Map;
 		SAnimatedObject																		Player;
 		::gpk::array_obj<SEnemy>															Enemies;
+
+		DIRECTION																			NextDirection;
+
+
 
 		unsigned int																		Score					= 0;
 		unsigned int																		CounterPellet			= 0;

@@ -78,15 +78,26 @@ void																	::wak::updatePlayer												(SGame& gameObject, float fL
 	
 	player.Stand															= false;
 
-		 if (GetAsyncKeyState('D')	&&	map.TilesSolid[player.Position.y][player.Position.x + 1] != true && playerDeltas.y > 0.3f && playerDeltas.y < 0.7f) { player.CurrentDirection = RIGHT; playerDeltas.y = 0.5f; }
-	else if (GetAsyncKeyState('A')	&&	map.TilesSolid[player.Position.y][player.Position.x - 1] != true && playerDeltas.y > 0.3f && playerDeltas.y < 0.7f) { player.CurrentDirection = LEFT ; playerDeltas.y = 0.5f; }
-	else if (GetAsyncKeyState('W')	&&	map.TilesSolid[player.Position.y - 1][player.Position.x] != true && playerDeltas.x > 0.3f && playerDeltas.x < 0.7f && player.Position.x != 0 && player.Position.x != 29)	{player.CurrentDirection = UP;		playerDeltas.x = 0.5f;}
-	else if (GetAsyncKeyState('S')	&&	map.TilesSolid[player.Position.y + 1][player.Position.x] != true && playerDeltas.x > 0.3f && playerDeltas.x < 0.7f && player.Position.x != 0 && player.Position.x != 29)	{player.CurrentDirection = DOWN;	playerDeltas.x = 0.5f;}
+	bool set = false;
+		 if (gameObject.NextDirection == ::wak::RIGHT	&& player.Position.x != map.Size.x - 1	&& map.TilesSolid[player.Position.y][player.Position.x + 1] != true && playerDeltas.y > 0.3f && playerDeltas.y < 0.7f)															{ set = true; }
+	else if (gameObject.NextDirection == ::wak::LEFT	&& player.Position.x != 0				&& map.TilesSolid[player.Position.y][player.Position.x - 1] != true && playerDeltas.y > 0.3f && playerDeltas.y < 0.7f)															{ set = true; }
+	else if (gameObject.NextDirection == ::wak::UP		&& player.Position.y != 0				&& map.TilesSolid[player.Position.y - 1][player.Position.x] != true && playerDeltas.x > 0.3f && playerDeltas.x < 0.7f && player.Position.x != 0 && player.Position.x != 29)	{ set = true; }
+	else if (gameObject.NextDirection == ::wak::DOWN	&& player.Position.y != map.Size.y - 1	&& map.TilesSolid[player.Position.y + 1][player.Position.x] != true && playerDeltas.x > 0.3f && playerDeltas.x < 0.7f && player.Position.x != 0 && player.Position.x != 29)	{ set = true; }
 
-	if		( player.Position.x ==  0 && playerDeltas.x < 0.3f)	{ player.Position.x = 29; playerDeltas.x = 0.9f;}
-	else if ( player.Position.x == 29 && playerDeltas.x > 0.7f)	{ player.Position.x =  0; playerDeltas.x = 0.1f;}
+	if(set) {
+		player.CurrentDirection = gameObject.NextDirection; 
+		if(0 == player.CurrentDirection % 2)
+			playerDeltas.y			= 0.5f; 
+		else
+			playerDeltas.x			= 0.5f; 
+	}
+	
+	if		( player.Position.x <=  0 /*&& playerDeltas.x < 0.3f*/)	{ player.Position.x = 29; playerDeltas.x = 0.9f; }
+	else if ( player.Position.x >= 29 /*&& playerDeltas.x > 0.7f*/)	{ player.Position.x =  0; playerDeltas.x = 0.1f; }
+	else
+		moveInDirection(gameObject, player, fLastFrameTime);
 
-	moveInDirection(gameObject, player, fLastFrameTime);
+
 	refreshPosFromDeltas(player);
 
 	if (gameObject.CounterPellet == 70 || gameObject.CounterPellet == 170) {
@@ -251,7 +262,7 @@ void																	reverse																(::wak::SAnimatedObject & ghost) {
 }
 void																	::wak::updateEnemies												(SGame& gameObject, float fLastFrameTime) {
 	for (uint32_t y = 0; y < (uint32_t)gameObject.Map.Size.y; y++)
-		memset(gameObject.Map.TilesEnemy[y], INVALID_ENEMY, gameObject.Map.Size.x);
+		memset(gameObject.Map.TilesEnemy[y].begin(), INVALID_ENEMY, gameObject.Map.Size.x);
 
 	if (gameObject.CounterPellet == 1) {
 		gameObject.Enemies[ROSITA].CurrentDirection							= UP;
@@ -309,7 +320,7 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 		gameObject.CounterFrightened += fLastFrameTime;
 		if (gameObject.CounterFrightened >= 7) {
 			gameObject.CounterFrightened = 0;
-			for (uint32_t iEnemy = 0; iEnemy < GHOST_COUNT - 1; ++iEnemy)
+			for (uint32_t iEnemy = 0; iEnemy < GHOST_COUNT; ++iEnemy)
 				gameObject.Enemies[iEnemy].CurrentMode = gameObject.Enemies[iEnemy].PrevtMode;
 		}
 	}

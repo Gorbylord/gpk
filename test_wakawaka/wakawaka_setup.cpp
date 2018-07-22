@@ -33,6 +33,11 @@ bool															 getSolidByImage(unsigned char image) {
 }
 
 void																					::wak::setupMap														(SGame& gameObject, const ::gpk::SImage<ubyte_t>& tileMap) {
+	gameObject.Map.TilesMap			.resize(tileMap.metrics());
+	gameObject.Map.TilesEnemy		.resize(tileMap.metrics());
+	gameObject.Map.TilesDecision	.resize(tileMap.metrics());
+	gameObject.Map.TilesSolid		.resize(tileMap.metrics());
+
 	gameObject.Map.Size		= tileMap.metrics().Cast<int32_t>();
 
 	for (uint32_t y = 0; y < (uint32_t)gameObject.Map.Size.y; ++y) {
