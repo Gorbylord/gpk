@@ -16,6 +16,24 @@ static const ::wak::STile tileDefinitions[] =
 ,{ 185		, 'L', "T_UP_LEFT"				, true,		}
 ,{ 205		, 'H', "HORIZONTAL"				, true,		}
 ,{ 186		, 'V', "VERTICAL"				, true,		}
+,{ 206		, 'A', "DOWN_HORIZONTAL"		, true,		}
+,{ 180		, 'B', "VERTICAL_RIGHT"			, true,		}
+,{ 181		, 'G', "INNER_CORNER_UP_RIGHT"	, true,		}
+,{ 182		, 'I', "INNER_CORNER_UP_LEFT"	, true,		}
+,{ 183		, 'J', "INNER_CORNER_DOWN_RIGHT", true,		}
+,{ 184		, 'Q', "INNER_CORNER_DOWN_LEFT"	, true,		}
+,{ 190		, 'K', "S_HORIZONTAL"			, true,		}
+,{ 191		, 'M', "S_HORIZONTAL_DOWN"		, true,		}
+,{ 192		, 'N', "S_VERTICAL"				, true,		}
+,{ 193		, 'S', "S_VERTICAL_RIGHT"		, true,		}
+,{ 194		, 'Y', "S_CORNER_DOWN_LEFT"		, true,		}
+,{ 195		, 'Z', "S_CORNER_UP_LEFT"		, true,		}
+,{ 196		, 'O', "S_CORNER_UP_RIGHT"		, true,		}
+,{ 197		, '1', "S_CORNER_DOWN_RIGHT"	, true,		}
+,{ 100		, '2', "T_RIGHT_UP"				, true,		}
+,{ 101		, '3', "T_RIGHT_DOWN"			, true,		}
+,{ 102		, '5', "T_LEFT_UP"				, true,		}
+,{ 103		, '6', "T_LEFT_DOWN"			, true,		}
 };
 
 unsigned char													 getImageByCode(unsigned char code) {

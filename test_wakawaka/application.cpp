@@ -61,6 +61,24 @@ GPK_DEFINE_APPLICATION_ENTRY_POINT(::gme::SApplication, "Module Explorer");
 		,	MAP_LINE
 		,	MAP_PELLET
 		,	MAP_ENERGYZER
+		,	MAP_DOWN_HORIZONTAL
+		,	MAP_VERTICAL_RIGHT
+		,	MAP_INNER_CORNER_UP_RIGHT
+		,	MAP_INNER_CORNER_UP_LEFT
+		,	MAP_INNER_CORNER_DOWN_RIGHT
+		,	MAP_INNER_CORNER_DOWN_LEFT
+		,	MAP_S_HORIZONTAL
+		,	MAP_S_HORIZONTAL_DOWN
+		,	MAP_S_VERTICAL
+		,	MAP_S_VERTICAL_RIGHT
+		,	MAP_S_CORNER_DOWN_LEFT
+		,	MAP_S_CORNER_UP_LEFT
+		,	MAP_S_CORNER_UP_RIGHT
+		,	MAP_S_CORNER_DOWN_RIGHT
+		,	MAP_T_RIGHT_UP
+		,	MAP_T_RIGHT_DOWN
+		,	MAP_T_LEFT_UP
+		,	MAP_T_LEFT_DOWN
 		,	TEXTURE_COUNT
 		};
 
@@ -230,7 +248,25 @@ struct SSprite {
 				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_UP_RIGHT)															texture = MAP_T_UP_RIGHT;
 				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_DOWN_RIGHT)															texture = MAP_T_DOWN_RIGHT;
 				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_UP_LEFT)																texture = MAP_T_UP_LEFT;
-				
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_DOWN_HORIZONTAL)														texture = MAP_DOWN_HORIZONTAL;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_VERTICAL_RIGHT)														texture = MAP_VERTICAL_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_INNER_CORNER_UP_RIGHT)													texture = MAP_INNER_CORNER_UP_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_INNER_CORNER_UP_LEFT)													texture = MAP_INNER_CORNER_UP_LEFT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_INNER_CORNER_DOWN_RIGHT)												texture = MAP_INNER_CORNER_DOWN_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_INNER_CORNER_DOWN_LEFT)												texture = MAP_INNER_CORNER_DOWN_LEFT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_HORIZONTAL)															texture = MAP_S_HORIZONTAL;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_HORIZONTAL_DOWN)														texture = MAP_S_HORIZONTAL_DOWN;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_VERTICAL)															texture = MAP_S_VERTICAL;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_VERTICAL_RIGHT)														texture = MAP_S_VERTICAL_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_CORNER_DOWN_LEFT)													texture = MAP_S_CORNER_DOWN_LEFT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_CORNER_UP_LEFT)														texture = MAP_S_CORNER_UP_LEFT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_CORNER_UP_RIGHT)														texture = MAP_S_CORNER_UP_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_S_CORNER_DOWN_RIGHT)													texture = MAP_S_CORNER_DOWN_RIGHT;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_RIGHT_DOWN)															texture = MAP_T_RIGHT_DOWN;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_RIGHT_UP)															texture = MAP_T_RIGHT_UP;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_LEFT_DOWN)															texture = MAP_T_LEFT_DOWN;
+				else if (app.GameInstance.Map.TilesMap[y][x] == TILE_T_LEFT_UP)																texture = MAP_T_LEFT_UP;
+
 				::gpk::grid_copy_alpha(target->Color.View, app.CharacterAnimationLayers[TEXTURE_PAC_MAP][texture], pointToDraw, magenta);
 			}
 		}

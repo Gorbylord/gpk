@@ -235,7 +235,7 @@ void																	getDirectionByTarget (::gpk::SCoord2<int32_t> target, ::wak
 
 void																	getDirection														(::wak::SGame & gameObject, ::wak::SEnemy & ghost) {
 	::gpk::SCoord2<int32_t>														targetTile															= {};
-	if (ghost.CurrentMode == ::wak::MODE_ESCAPE)
+	if (ghost.CurrentMode == ::wak::MODE_ESCAPE && ghost.PrevTile != ghost.Position)
 		ghost.CurrentDirection												= (::wak::DIRECTION)(rand() % 4);
 	else if (ghost.CurrentMode == ::wak::MODE_DISBAND) {
 		targetTile = ghost.TargetTile;
@@ -284,18 +284,9 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 	for (uint32_t y = 0; y < (uint32_t)gameObject.Map.Size.y; y++)
 		memset(gameObject.Map.TilesEnemy[y].begin(), INVALID_ENEMY, gameObject.Map.Size.x);
 
-	if (gameObject.CounterPellet == 1) {
-		gameObject.Enemies[ROSITA].CurrentDirection							= UP;
-		gameObject.Enemies[ROSITA].AlreadyOut								= true;
-	}
-	else if (gameObject.CounterPellet == 30) {
-		gameObject.Enemies[DONJAIME].CurrentDirection						= UP;
-		gameObject.Enemies[DONJAIME].AlreadyOut								= true;
-	}
-	else if (gameObject.CounterPellet == 80) {
-		gameObject.Enemies[COOLGUY].CurrentDirection						= UP;
-		gameObject.Enemies[COOLGUY].AlreadyOut								= true;
-	}
+	if		(gameObject.CounterPellet == 1)		gameObject.Enemies[ROSITA].AlreadyOut		= true;
+	else if (gameObject.CounterPellet == 30)	gameObject.Enemies[DONJAIME].AlreadyOut		= true;
+	else if (gameObject.CounterPellet == 80)	gameObject.Enemies[COOLGUY].AlreadyOut		= true;
 
 	::gpk::SCoord2<int32_t>										modeCheck = {};
 	modeCheck.y = uint32_t(gameObject.Player.Position.y - gameObject.Enemies[COOLGUY].Position.y);
@@ -394,6 +385,7 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 				currentEnemy.Position.y				= 15;
 				currentEnemy.PositionDeltas.x		= 0;
 				currentEnemy.PositionDeltas.y		= 0;
+				currentEnemy.CurrentDirection = ::wak::DOWN;
 			}
 			else if (currentEnemy.Position.y == 15 && currentEnemy.Position.x == 15) {
 				if (currentEnemy.PositionDeltas.y >= 0.9f) {
@@ -413,6 +405,7 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 				currentEnemy.Position.y				= 15;
 				currentEnemy.PositionDeltas.x		= 0;
 				currentEnemy.PositionDeltas.y		= 0.9f;
+				currentEnemy.CurrentDirection = ::wak::UP;
 			}
 			else if (currentEnemy.Position.y == 15 && currentEnemy.Position.x == 15) {
 				if (currentEnemy.PositionDeltas.y <= 0.1f) {
