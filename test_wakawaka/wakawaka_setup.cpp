@@ -1,21 +1,21 @@
 #include "wakawaka.h"
 
 static const ::wak::STile tileDefinitions[] =
-{ { ' '		, '0', "VOID"					, false, }
-,{ 250		, 'P', "POINTS"					, false, }
-,{ 15		, 'W', "POWER_UP"				, false, }
-,{ 3		, 'X', "TARGET_FRUIT"			, false, }
-,{ 179		, '4', "VERTICAL_LINE"			, true, }
-,{ 200		, 'C', "CORNER_DOWN_LEFT"		, true, }
-,{ 201		, 'D', "CORNER_UP_LEFT"			, true, }
-,{ 187		, 'E', "CORNER_UP_RIGHT"		, true, }
-,{ 188		, 'F', "CORNER_DOWN_RIGHT"		, true, }
-,{ 203		, 'T', "T_DOWN"					, true, }
-,{ 202		, 'U', "T_UP"					, true, }
-,{ 204		, 'R', "T_RIGHT"				, true, }
-,{ 185		, 'L', "T_LEFT"					, true, }
-,{ 205		, 'H', "HORIZONTAL"				, true, }
-,{ 186		, 'V', "VERTICAL"				, true, }
+{ { ' '		, '0', "VOID"					, false,	}
+,{ 250		, 'P', "POINTS"					, false,	}
+,{ 15		, 'W', "POWER_UP"				, false,	}
+,{ 3		, 'X', "TARGET_FRUIT"			, false,	}
+,{ 179		, '4', "VERTICAL_LINE"			, true,		}
+,{ 200		, 'C', "CORNER_DOWN_LEFT"		, true,		}
+,{ 201		, 'D', "CORNER_UP_LEFT"			, true,		}
+,{ 187		, 'E', "CORNER_UP_RIGHT"		, true,		}
+,{ 188		, 'F', "CORNER_DOWN_RIGHT"		, true,		}
+,{ 203		, 'T', "T_DOWN_LEFT"			, true,		}
+,{ 202		, 'U', "T_UP_RIGHT"				, true,		}
+,{ 204		, 'R', "T_DOWN_RIGHT"			, true,		}
+,{ 185		, 'L', "T_UP_LEFT"				, true,		}
+,{ 205		, 'H', "HORIZONTAL"				, true,		}
+,{ 186		, 'V', "VERTICAL"				, true,		}
 };
 
 unsigned char													 getImageByCode(unsigned char code) {

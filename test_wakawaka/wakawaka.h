@@ -14,10 +14,10 @@
 #define														TILE_UP_LEFT				201
 #define														TILE_UP_RIGHT				187
 #define														TILE_DOWN_RIGHT				188
-#define														TILE_T_DOWN					203
-#define														TILE_T_UP					202
-#define														TILE_T_RIGHT				204
-#define														TILE_T_LEFT					185
+#define														TILE_T_DOWN_LEFT			203
+#define														TILE_T_UP_RIGHT				202
+#define														TILE_T_DOWN_RIGHT			204
+#define														TILE_T_UP_LEFT				185
 #define														TILE_HORIZONTAL				205
 #define														TILE_VERTICAL				186
 namespace wak

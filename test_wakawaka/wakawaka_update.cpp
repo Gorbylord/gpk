@@ -32,7 +32,31 @@ void																			lifeLost												(::wak::SGame & gameObject) {
 void																			ghostLost												(::wak::SGame & gameObject) { ::wak::setupEnemies(gameObject); }
 
 void																			moveInDirection								(::wak::SGame & gameObject, ::wak::SAnimatedObject & character, float fLastFrameTime) {
-	if (character.CurrentDirection == ::wak::UP) {
+	if (character.Position.x == 0) {
+		if (character.CurrentDirection == ::wak::LEFT) {
+			if (character.PositionDeltas.x < 0.5f) {
+				character.Position.x = 29;
+				character.PositionDeltas.x = 0.9f;
+			}
+			else
+				character.PositionDeltas.x -= character.Speed * fLastFrameTime;
+		}
+		else
+			character.PositionDeltas.x += character.Speed * fLastFrameTime;
+	}
+	else if (character.Position.x == 29) {
+		if (character.CurrentDirection == ::wak::RIGHT) {
+			if (character.PositionDeltas.x > 0.5f) {
+				character.Position.x = 0;
+				character.PositionDeltas.x = 0.1f;
+			}
+			else
+				character.PositionDeltas.x += character.Speed * fLastFrameTime;
+		}
+		else
+			character.PositionDeltas.x -= character.Speed * fLastFrameTime;
+	}
+	else if (character.CurrentDirection == ::wak::UP) {
 		if (gameObject.Map.TilesSolid[character.Position.y - 1][character.Position.x] != true || gameObject.Map.TilesSolid[character.Position.y - 1][character.Position.x] == true && character.PositionDeltas.y > 0.5f)
 			character.PositionDeltas.y			-= character.Speed * fLastFrameTime;
 		else { character.PositionDeltas.y		= 0.5f;		character.Stand					= true; }
@@ -92,11 +116,7 @@ void																	::wak::updatePlayer												(SGame& gameObject, float fL
 			playerDeltas.x			= 0.5f; 
 	}
 	
-	if		( player.Position.x <=  0 /*&& playerDeltas.x < 0.3f*/)	{ player.Position.x = 29; playerDeltas.x = 0.9f; }
-	else if ( player.Position.x >= 29 /*&& playerDeltas.x > 0.7f*/)	{ player.Position.x =  0; playerDeltas.x = 0.1f; }
-	else
-		moveInDirection(gameObject, player, fLastFrameTime);
-
+	moveInDirection(gameObject, player, fLastFrameTime);
 
 	refreshPosFromDeltas(player);
 
@@ -411,9 +431,6 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 			moveInDirection(gameObject, currentEnemy, fLastFrameTime);
 
 		refreshPosFromDeltas(currentEnemy);
-
-		if (currentEnemy.Position.x == 0 && currentEnemy.PositionDeltas.x < 0.3f) { currentEnemy.Position.x = 29;				currentEnemy.PositionDeltas.x = 0.9f; }
-		else if (currentEnemy.Position.x == 29 && currentEnemy.PositionDeltas.x > 0.9f) { currentEnemy.Position.x = 0;				currentEnemy.PositionDeltas.x = 0.1f; }
 
 		gameObject.Map.TilesEnemy[currentEnemy.Position.y][currentEnemy.Position.x] = 1;
 	}
