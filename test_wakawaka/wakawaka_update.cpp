@@ -353,7 +353,7 @@ void																	::wak::updateEnemies												(SGame& gameObject, float f
 		else if (currentEnemy.Reverse == true) {
 			reverse(currentEnemy);
 			currentEnemy.Reverse = false;
-		}
+		}	
 		else if (gameObject.Map.TilesDecision[currentEnemy.Position.y][currentEnemy.Position.x] == true && currentEnemy.PositionDeltas.y > 0.3f && currentEnemy.PositionDeltas.x > 0.3f && currentEnemy.PositionDeltas.y < 0.7f && currentEnemy.PositionDeltas.x < 0.7f /*&& currentEnemy.PrevTile != currentEnemy.Position*/) {
 			if (currentEnemy.Dead == true) {
 				getDirectionByTarget({ 15, 15 }, gameObject, currentEnemy);
